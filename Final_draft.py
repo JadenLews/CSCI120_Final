@@ -19,5 +19,4 @@ class MYGUI:
         self.button3.place(x=5, y=150, height=60, width= 120)
 
         self.root.mainloop()
-
 meeee = MYGUI()
