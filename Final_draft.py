@@ -4,6 +4,7 @@ class MYGUI:
 
     def __init__(self):
         self.root = tk.Tk()
+        self.profile = 'Unknown'
         self.root.geometry('800x500')
         self.label = tk.Label(self.root, text= 'Landing Page', font=('Arial', 15))
         self.label.pack(padx=10, pady=10)
@@ -18,11 +19,5 @@ class MYGUI:
         self.button3.place(x=5, y=150, height=60, width= 120)
 
         self.root.mainloop()
-
-    def show_message(self):
-        if self.check_state.get() == 0:
-            MYGUI()
-        else:
-            self.counter += 1
 
 meeee = MYGUI()
