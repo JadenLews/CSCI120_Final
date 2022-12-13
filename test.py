@@ -1,105 +1,6 @@
 import tkinter as tk
-from tkinter import messagebox
 import csv
-class MYGUI:
-
-    def __init__(self):
-        self.root = tk.Tk()
-        self.profile = 'Unknown'
-        self.root.geometry('800x500')
-        self.label = tk.Label(self.root, text= 'Landing Page', font=('Arial', 15))
-        self.label.pack(padx=10, pady=10)
-
-        self.button = tk.Button(self.root, text= 'Jaden', font=('Arial', 10), command= self.open)
-        self.button.place(x=5, y=10, height=60, width= 120)
-
-        self.button2 = tk.Button(self.root, text= 'Roan', font=('Arial', 10), command= self.open2)
-        self.button2.place(x=5, y=80, height=60, width= 120)
-
-        self.button3 = tk.Button(self.root, text= 'Keith', font=('Arial', 10))
-        self.button3.place(x=5, y=150, height=60, width= 120)
-
-        self.root.mainloop()
-
-    def open(self):
-        self.newwindow = FoodNut()
-
-    def open2(self):
-        self.newwindow2 = profile()
-
-    def close(self):
-        self.newwindow.top.destroy()
-        self.newwindow = FoodNut()
-
-class FoodNut:
-    def __init__(self):
-                                #Initialize nutrition variables
-        self.calories = 0 
-        self.carbs = 0
-        self.protein = 0
-        self.fat = 0
-
-                                #Create window and make labels and text entry
-        self.top = tk.Toplevel()
-        self.top.title('Food Nutrition Calculator')
-        self.top.geometry('800x500')
-
-        label = tk.Label(self.top, text= 'Food Nutrition Calculator', font=('Arial', 20))
-        label.pack(padx=10, pady=10)
-
-        self.callabel = tk.Label(self.top, text= (f'Calories = {self.calories}'), font=('Arial', 14))
-        self.callabel.place(x=30, y=20)
-
-        self.carblabel = tk.Label(self.top, text= (f'Carbs = {self.carbs}  Grams'), font=('Arial', 14))
-        self.carblabel.place(x=49, y=50)
-
-        self.proteinlabel = tk.Label(self.top, text= (f'Protein = {self.protein}  Grams'), font=('Arial', 14))
-        self.proteinlabel.place(x=40, y=80)
-
-        self.fatlabel = tk.Label(self.top, text= (f'Fat = {self.fat}  Grams'), font=('Arial', 14))
-        self.fatlabel.place(x=72, y=110)
-
-        self.label2 = tk.Label(self.top, text= ('-Grams Eaten'), font=('Arial', 10))
-        self.label2.place(x=670, y=258)
-
-        self.label3 = tk.Label(self.top, text= ('-Food'), font=('Arial', 10))
-        self.label3.place(x=520, y=258)
-
-        self.textentry = tk.Text(self.top, height= 1, font=('Arial', 15))
-        self.textentry.pack(padx= 280, pady= 200)
-
-        self.textentry2 = tk.Text(self.top, height= 1, font=('Arial', 15), width=6)
-        self.textentry2.place(x=600, y=258)
-
-                            #Create buttons, exit button quits program, entry button sends filled out textbox to update nutrition info
-        button = tk.Button(self.top, text= 'exit', font=('Arial', 14), command= self.top.destroy)
-        button.place(x= 725, y= 0, height= 35, width= 75)
-
-        self.textbut = tk.Button(self.top, text= 'butt', font=('Arial', 14), command= self.addfoodbutton)
-        self.textbut.place(x= 360, y= 300, height= 30, width= 80)
-
-
-                        #function to add the food nutrition and update information
-    def addfoodbutton(self):  
-        file_object = open('Foods.csv', mode='r')
-        original_text = file_object.read()
-        splitlist = original_text.split()
-        file_object.close()
-        gramsate = int(self.textentry2.get('1.0', tk.END))
-        grams_multiplier = gramsate / 100
-        if self.textentry.get('1.0', tk.END).strip() in splitlist:
-            self.calories += (int(splitlist[splitlist.index(self.textentry.get('1.0', tk.END).strip()) + 1])) * grams_multiplier
-            self.fat += (int(splitlist[splitlist.index(self.textentry.get('1.0', tk.END).strip()) + 2])) * grams_multiplier
-            self.protein += (int(splitlist[splitlist.index(self.textentry.get('1.0', tk.END).strip()) + 3])) * grams_multiplier
-            self.carbs += (int(splitlist[splitlist.index(self.textentry.get('1.0', tk.END).strip()) + 4])) * grams_multiplier
-            self.callabel.config(text=f'Calories = {self.calories:.1f}')
-            self.fatlabel.config(text=f'Fat = {self.fat:.1f}')
-            self.proteinlabel.config(text=f'Protein = {self.protein:.1f}')
-            self.carblabel.config(text=f'Carb = {self.carbs:.1f}')
-        else:
-            print('false')
-
-
+from tkinter import messagebox
 class profile:
     def __init__(self,dict=None):
 
@@ -199,8 +100,4 @@ class profile:
             #in lbs
             #in kg
             profile_writer.writerow(['weight', self.weight.strip()])
-
-
-
-
-root = MYGUI()
+blah = profile()
